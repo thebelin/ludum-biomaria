@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 91b817c11974649f3b1ff84a34c91712
+timeCreated: 1492837038
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: PT Sans
+  fontNames:
+  - PT Sans
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 88964502057124d139b2e1df2196a9bf, type: 3}
+  - {fileID: 12800000, guid: 1e458cf93259a4670b20851521ee4bb8, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
