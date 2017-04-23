@@ -24,7 +24,7 @@ namespace biomaria {
 		public Image bacteriaImage;
 
 		private QuorumController qc;
-
+		private GameObject LastSpawned;
 		public void Start ()
 		{
 			// get the quorum controller
@@ -55,12 +55,17 @@ namespace biomaria {
 				currentType = 0;
 
 			// Load the type
-			GameObject gm = bacTypes [currentType];
-			if (gm) {
-				currentBacteria = gm.GetComponent<Bacteria> ();
+			// export the array
+			// Get rid of the last spawned item
+			if (LastSpawned)
+				DestroyImmediate (LastSpawned);
+
+			LastSpawned = Instantiate(bacTypes [currentType]) as GameObject;
+			if (LastSpawned) {
+				currentBacteria = LastSpawned.GetComponent<Bacteria> ();
 				// add the row/col to the bacteria data
-				currentBacteria.row = row;
-				currentBacteria.col = col;
+				currentBacteria.row = (int) row;
+				currentBacteria.col = (int) col;
 
 				// Add the bacteria to the quorum
 				qc.AddBacteria(currentBacteria);
@@ -68,34 +73,6 @@ namespace biomaria {
 
 			// Set the values in the display
 			SetValues();
-		}
-
-		// {Basic, Attack, Stomach, Wall, Propeller, Dart};
-		public int BacteriaPrice(int type)
-		{
-			switch (type)
-			{
-			// none
-			case 0:
-				return 0;
-			// attack
-			case 1:
-				return 2;
-			// Stomach
-			case 2:
-				return 3;
-			// Wall
-			case 3:
-				return 2;
-			case 4:
-			// Propeller
-				return 2;
-			case 5:
-			// Dart
-				return 4;
-			default:
-				return 1;
-			}
 		}
 
 		private void SetValues()
